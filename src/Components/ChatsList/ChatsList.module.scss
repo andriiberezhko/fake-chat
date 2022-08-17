@@ -1,0 +1,22 @@
+.ChatsList{
+    // width: 100%;
+    height: 100%;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: rgb(153, 184, 212);
+}
+
+.items{
+    display: flex;
+    align-items: center;
+    margin: 5px 0 5px 0;
+}
+.itemImg{
+    border-radius: 50%;
+}
+.itemData{
+    margin-left: 10px;
+}
+.itemTime{
+    margin-left: auto;
+}
