@@ -1,16 +1,26 @@
 import React from "react";
 import style from "./ChatsList.module.scss";
 import { ChatsData } from "../../db/ChatsData";
+import { useSelector } from "react-redux";
 
 export const ChatsList = () => {
+  const { filter } = useSelector((state) => state.filter);
+  // console.log(useSelector((state) => state));
+  const filteredContacts = () => {
+    const normalizedFilter = filter.toLowerCase();
+    const visibleContacts = ChatsData.filter((contact) =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+    return visibleContacts;
+  };
   return (
     <>
       <h2>Chats</h2>
       <div className={style.ChatsList}>
         <ul>
-          {ChatsData.map((item) => {
+          {filteredContacts().map((item) => {
             return (
-              <li className={style.items}>
+              <li className={style.items} key={item.id}>
                 <img
                   src={`${item.avatar}`}
                   alt={`${item.name}`}
