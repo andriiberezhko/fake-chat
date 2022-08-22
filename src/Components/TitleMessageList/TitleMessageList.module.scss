@@ -1,7 +1,8 @@
 .title{
     display: flex;
-    padding: 15px;
+    padding: 20px;
         align-items: center;
+        border-bottom: 0.5px solid rgb(160, 160, 160);
 }
 .empty{
     height: 50px;
@@ -16,4 +17,5 @@
 .name{
     font-size: 18px;
     margin-left: 10px;
+    color: rgb(105, 105 , 105);
 }

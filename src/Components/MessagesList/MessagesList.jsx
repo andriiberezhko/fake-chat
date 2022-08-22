@@ -9,7 +9,7 @@ import style from "./MessagesList.module.scss";
 
 export const MessagesList = () => {
   const { id } = useParams();
-  // console.log(useParams());
+
   return (
     <div className={style.MessagesList}>
       {id ? (

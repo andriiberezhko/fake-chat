@@ -11,10 +11,6 @@ export const filterSlice = createSlice({
     filterContacts(state, action) {
       state.filter = action.payload;
     },
-    // addMessage(state, action) {
-    //   state.message = [...state.message, action.payload];
-    //   console.log(action.payload);
-    // },
   },
 });
 

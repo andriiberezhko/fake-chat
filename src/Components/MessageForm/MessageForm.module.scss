@@ -1,0 +1,23 @@
+.form{
+    padding: 20px;
+    border-top: 0.5px solid rgb(105,105,105);
+    position: relative;
+}
+.input{
+    width: 95%;
+        padding: 10px;
+        border: none;
+        border-radius: 20px;
+}
+
+.button{
+        width: 24px;
+            height: 24px;
+            position: absolute;
+            right: 67px;
+            top: 25px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            background-image: url('../../img/send.svg');
+}

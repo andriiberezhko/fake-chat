@@ -6,7 +6,6 @@ import { TitleMessageList } from "../Components/TitleMessageList/TitleMessageLis
 export const Dialog = () => {
   const { id } = useParams();
   const contact = useGetContactByIdQuery(id).data;
-  // console.log(contact);
 
   return (
     <>

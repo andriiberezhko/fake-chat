@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { useAddMessageMutation } from "../../service/serviceApi";
 import { ResponseMessage } from "../../service/responseMessage";
 
+import style from "./MessageForm.module.scss";
+
 export const MessageForm = () => {
   const [text, setText] = useState("");
 
@@ -34,18 +36,18 @@ export const MessageForm = () => {
   };
 
   return (
-    <form onSubmit={onHandleSubmit}>
+    <form onSubmit={onHandleSubmit} className={style.form}>
       <label>
         <input
           type="text"
           name="message"
           value={text}
           placeholder="Type your message"
-          // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           onChange={changeInput}
+          className={style.input}
         />
       </label>
-      <button type="submit">send message</button>
+      <button type="submit" className={style.button}></button>
     </form>
   );
 };
