@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { filterContacts } from "../../Redux/filterSlice";
+import { filterContacts } from "../../service/filterSlice";
 
 export const SearchField = () => {
   const dispatch = useDispatch();

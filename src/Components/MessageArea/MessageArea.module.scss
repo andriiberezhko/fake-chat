@@ -5,3 +5,12 @@
         overflow-y: auto;
     background-color: white;
 }
+.empty{
+    font-size: 30px;
+    text-align: center;
+        display: block;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+}

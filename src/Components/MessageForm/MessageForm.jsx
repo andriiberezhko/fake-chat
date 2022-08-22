@@ -1,21 +1,36 @@
 import React from "react";
+
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addMessage } from "../../Redux/filterSlice";
+import { useParams } from "react-router-dom";
+import { useAddMessageMutation } from "../../service/serviceApi";
+import { ResponseMessage } from "../../service/responseMessage";
 
 export const MessageForm = () => {
-  const [message, setMessage] = useState("");
-  const dispatch = useDispatch();
+  const [text, setText] = useState("");
+
+  const { id } = useParams();
+
+  const [addMessage] = useAddMessageMutation();
+
   const changeInput = (event) => {
-    setMessage(event.currentTarget.value);
+    setText(event.currentTarget.value);
   };
   const onHandleSubmit = (event) => {
+    const message = {
+      text: text,
+      time: new Date(),
+      isme: true,
+    };
     event.preventDefault();
-    dispatch(addMessage(message));
+    addMessage({ id, message });
     reset();
+    setTimeout(() => {
+      ResponseMessage().then((message) => addMessage({ id, message }));
+    }, 5000);
   };
+
   const reset = () => {
-    setMessage("");
+    setText("");
   };
 
   return (
@@ -24,9 +39,9 @@ export const MessageForm = () => {
         <input
           type="text"
           name="message"
-          value={message}
+          value={text}
           placeholder="Type your message"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           onChange={changeInput}
         />
       </label>

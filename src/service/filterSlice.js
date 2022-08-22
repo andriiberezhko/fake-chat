@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   filter: "",
-  message: [],
 };
 
 export const filterSlice = createSlice({
@@ -12,11 +11,11 @@ export const filterSlice = createSlice({
     filterContacts(state, action) {
       state.filter = action.payload;
     },
-    addMessage(state, action) {
-      state.message = [...state.message, action.payload];
-      console.log(action.payload);
-    },
+    // addMessage(state, action) {
+    //   state.message = [...state.message, action.payload];
+    //   console.log(action.payload);
+    // },
   },
 });
 
-export const { filterContacts, addMessage } = filterSlice.actions;
+export const { filterContacts } = filterSlice.actions;
