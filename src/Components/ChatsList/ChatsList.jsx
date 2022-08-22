@@ -23,21 +23,32 @@ export const ChatsList = () => {
   let url = location.pathname !== "/dialog" ? "/dialog/" : "";
 
   const visCont = contacts && filteredContacts();
-  // console.log(visCont);
-  // const byField = (field) => {
-  //   return (a, b) => (a[field] > b[field] ? 1 : -1);
-  // };
-  // visCont.sort(byField('message'))
-  console.log(
+  const sortCont =
     contacts &&
-      visCont.sort(function (a, b) {
-        const a1 = a.message.map((item) => item.time);
-        console.log(a1);
-        console.log(Math.min(...a1));
+    visCont.sort(function (a, b) {
+      const a1 = a.message.map((item) => Date.parse(item.time));
+      const b1 = b.message.map((item) => Date.parse(item.time));
+      const maxTimeA = Math.max(...a1);
+      const maxTimeB = Math.max(...b1);
+      return maxTimeB - maxTimeA;
+    });
 
-        return a - b;
-      })
-  );
+  // console.log(
+  //   contacts &&
+  //     visCont.sort(function (a, b) {
+  //       // console.log(a);
+  //       const a1 = a.message.map((item) => Date.parse(item.time));
+  //       const b1 = b.message.map((item) => Date.parse(item.time));
+  //       // console.log("a", a1);
+  //       // console.log("b", b1);
+  //       const maxTimeA = Math.max(...a1);
+  //       const maxTimeB = Math.max(...b1);
+  //       console.log("max A", maxTimeA);
+  //       console.log("max B", maxTimeB);
+  //       // const maxTime = Math.max(...a1);
+  //       return maxTimeA - maxTimeB;
+  //     })
+  // );
 
   return (
     <>
@@ -45,7 +56,7 @@ export const ChatsList = () => {
       <div className={style.ChatsList}>
         <ul>
           {contacts &&
-            filteredContacts().map((item) => {
+            sortCont.map((item) => {
               // console.log(filteredContacts());
               const lastMessage = item.message[item.message.length - 1];
               // console.log(lastMessage);
